@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        //Object오브젝트 --> 데이터를 담는 측면만 다룬다. Object안에서는 = 쓰면안되고, :를쓴다.
+        //Object는 키로 모든것을 접근 할수있다, 즉, 키와 값으로 이루어져있다. 
+        let person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 40,
+            tel: "01023492928",
+            email: "aaa@mail.com"
+        };
+
+        //우리가 어떤 키로 어떤 값을 쓸수있는지 명확하게 쓸 수있다. 
+        console.log(person.firstName);
+        console.log(person.age);
+
+        person.age = 41;
+        console.log(person.age);
+
+        console.log(person["firstName"]);
+
+        //특정값으로 접근할때 . 과 []로 접근할수있다. 
+        //사용자가 입력했을때 가져와야되는! 
+        let firstNameKey = "firstName";
+
+        console.log(person.firstNameKey);
+        //사용자가 결정하는 시점에 알수있는! 실행하는 시점에만 알 수있다! 
+        //person에 firstNameKey가 담겨져있지않다.
+        //사용자가 입력한 값은 문자열로 들어오게되는데, 따라서 문자열로 담을 수 있는 [] 로만 가져올 수있다.  
+        //즉, 정확히 알고있는 키 빼고는 전부 []를 사용한다.
+        console.log(person["firstNameKey"]);
+    </script>
+</body>
+
+</html>

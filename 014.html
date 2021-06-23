@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        //19를 변수 age에 넣는다.
+        var age = 18;
+
+        //조건삼항연산자 -> age가 19보다 크거나같으면 true 아니면 false
+        var isAdult = (age >= 19) ? true : false;
+
+        console.log(isAdult);
+
+
+
+        //연속삼항연산자
+        var time = 21;
+
+        //greeting변수에 time 10보다 작거나 같다! 하면 morning 아니면 / time 16보다 작거나 같으면 afternoon 아니면/ time이 20보다 작거나 같으면 eveing아니면 ninght
+        var greeting = (time <= 10) ? "Good morning!" : (time <= 16) ? "Good afternoon!" : (time <= 20) ?
+            "Good eveing!" :
+            "Good ninght!";
+        console.log(greeting);
+    </script>
+</body>
+
+</html>
