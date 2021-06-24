@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+
+    <script src="4-04.user_data.js"></script>
+    <script>
+        //함수 --재사용을 하기위함 / 원하는타이밍에 호출 가능 / 유지보수가쉽다 /코드의 품질이 좋아진다.
+        //실력이 뛰어난 사람이 만들어어놓은 .js들을 만들어놓고, 쓰라고 공유해준다. 
+        //코드의 가독성이 높아진다.
+
+        //함수이름
+
+
+        //n1- 어떤값을 넣는다.
+        //n2- 어떤값을 넣는다.
+        //return 어떤형태의 여떤데이터를 반환한다.
+        function add(n1, n2) {
+            return n1 + n2;
+        }
+        //파라미터가 없는 함수들도있다. 
+        function calculator(n1, n2) {
+            let y = n1 + n2;
+            return y;
+        }
+
+        function getFullName(firstName, lastName) {
+            return firstName + " " + lastName;
+        }
+        getFullName("John", "Doe");
+
+
+        // console.log(10+4);
+        // console.log(12+7);
+        let sum = add(10, 4);
+        console.log(sum);
+        console.log(add(12, 7));
+        console.log(add(43, 3));
+        //내가 원하는 타이밍에 호출하려고한다면 -> 함수로 만들어준다! 
+        //for and while은보통 바로 실행된다. 
+
+        //사용자가 넣은 돈을 받는다
+        //배열을 리턴한다
+
+        //문제2. 음료자판기 문제를 함수로, 사용자가 넣은 돈은 파라미터로 받고
+        //구매할 수 있는 음료 리스트 반환하기
+
+        //함수를 선언한다.
+        //함수 이름은 showProductList
+        //파라미터는 (사용자에게 받는돈 ) inputCoin
+        //inputCoin으로 구매할수있는 음료 목록을 showProductList 배열에서 추출해서
+        //새로운 배열로 만들어서
+        //그녀석을 return 해주세요.
+        //받는 쪽에서는 var,let outputList = 
+        //console.table(outputList);
+
+        //if typeof == number ((번외 : 체크하기))
+        //개발은 모든게 예외처리이다. 
+        var productList = [{
+                name: "솔의눈",
+                price: 700
+            }, {
+                name: "커피",
+                price: 700
+            },
+            {
+                name: "파워레이드",
+                price: 1200
+            },
+            {
+                name: "오렌지",
+                price: 1000
+            },
+            {
+                name: "보리차",
+                price: 1200
+            }, {
+                name: "밀키스",
+                price: 800
+            },
+
+        ];
+        //파라미터안에는 주는데로받는것이기때문에, 선언자 var 이런게 필요가없다.
+        // var inputCoin = 1000;
+
+
+        // function showProductList(inputCoin) {
+        //     var temp = [];
+        //     for (var drink of productList) {
+        //         if (drink.price <= inputCoin) {
+        //             temp.push(drink);
+        //         }
+        //     }
+        //     return temp;
+        // }
+        // console.table(showProductList(700));
+
+
+
+        var getProductList = function (inputCoin) {
+            var temp = [];
+            for (var drink of productList) {
+                if (drink.price <= inputCoin) {
+                    temp.push(drink);
+                }
+            }
+            return temp;
+        }
+        let output = getProductList(800);
+        console.table(output);
+
+
+
+        //문제3. 사용자 리스트에서 gender 파라미터를 받고 male, female해당하는
+        //테이터만 반환하기
+
+        //함수명 getUserList
+        //파라미터명 gender
+        //return outputUserList 
+        //호출 getUserList("male");
+        //호출 getUserList("female");
+
+        function getUserList(list) {
+            outputUserList = [];
+            for (var person of userList) {
+                if (person.gender == list) {
+                    outputUserList.push(person);
+                }
+            }
+            return outputUserList;
+        }
+        console.table(getUserList("female"));
+
+
+        //문제4. 계산기 만들기. 숫자2개에 대한 더하기/빼기/곱하기/나누기를 수행하는 함수
+        //파라미터로 숫자 2개와 operator인 +,-,*,/ 를 입력받고 계산 수행
+        //함수명 calculator
+        //파라미터명 n1, n2, operator
+        //return 계산된 값
+
+        function calculator(n1, n2, operator) {
+            if (operator == "+") {
+                return n1 + n2;
+            } else if (operator == "-") {
+                return n1 - n2;
+            } else if (operator == "*") {
+                return n1 * n2;
+            } else if (operator == "/") {
+                return n1 / n2;
+            }
+        }
+
+        console.log(calculator(2, 3, "+"));
+        console.log(calculator(2, 3, "-"));
+        console.log(calculator(2, 3, "*"));
+        console.log(calculator(2, 3, "/"));
+    </script>
+</body>
+
+</html>

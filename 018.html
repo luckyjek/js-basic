@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        //for문을 어디까지 돌려야될지 알 때 for문을사용.
+        //배열처럼 길이가 있을때! 
+
+
+        //while문 , do-while문-> 특정조건을 만족하고싶을때 많이 사용한다.
+        //배열같이 여러개있을때 사용하지는않는다. -> 즉, 데이터를 꺼낼때는 for문을 이용! 
+
+
+        var inputPrice = 10000;
+        var coinUnit = 500; // 코인단위  
+        var coinConunt = 0;
+
+        while (inputPrice > 0) {
+            inputPrice = inputPrice - coinUnit;
+            coinConunt++;
+        }
+        console.log(coinConunt);
+
+
+
+        // let i = 11;
+        // var point = 0;
+
+        // while (point <= 100) {
+        //     //코드작성
+        //     point += 4;
+        //     console.log(point);
+        //     //i++;
+        // }
+
+        // let i = 11;
+        // do {
+        //     console.log(i);
+        // } while (i < 10);
+    </script>
+</body>
+
+</html>

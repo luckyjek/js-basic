@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        //Object안에 Object에 접근할때 this를 붙여준다.
+        //꼭 객체에 접근할때 
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            // getFullName: function () {
+            //     return this.firstName + " " + this.lastName;
+            // }
+        };
+
+
+        //var person = {};
+
+        var person = new Object();
+        person.lastName = "Doe";
+        person.getFullName = function () {
+            return this.firstName + " " + this.lastName;
+        }
+    </script>
+</body>
+
+</html>

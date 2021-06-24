@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        //6 자리가 맞는지 안맞는지 확인하기위해 (주민번호 등 )
+        var txt = "abcdefghijklmnopqrstuvwxyz";
+        console.log(txt.length);
+
+
+        // l에 해당하는 인덱스 번호를 리턴해준다.
+        var txt = "Please locate where locate occur!";
+        console.log(txt.indexOf("sdfsadfsafds")); //-1
+        var tel = "010-0303-2222"; // -쓰지말랬는데 썼어 그래서 log로 잘좀써봐요 출력
+
+        //우리는 용도를 아는게중요! 기능은 나중에 기억이안나...
+        if (tel.indexOf("-") > -1) {
+            console.log("잘좀써봐요")
+        }
+
+        //slice --내가원하는 기준으로 문자를 자른다.
+        //2개의 파라미터 받는다. 첫번째 - 시작인덱스번호 , 두번째 - 종료인덱스번호
+        var text = "Apple, Banana, Kiwi";
+        console.log(text.slice(7, 13));
+        console.log(text.slice(7));
+        console.log(text.slice(-12)); // -(마이너스)값이 들어오면 뒤에서부터 센다
+
+        var txt = "9904121";
+        console.log(txt.slice(-1)); //끝자리 부터 읽으니까! -1 넣으면된다
+
+        //시리얼넘버가 몇자리까지 이런게 다 규칙이있따! 
+        //그럼 슬라이스를함수를 이용해서 가져온다! '용도'기입!
+
+        //substring  == slice 또 다른 용도는 딱히 없다.
+        console.log(text.substring(7, 13));
+        console.log(text.substring(7));
+
+        //substr = 첫번째 - 시작인덱스, 두번째 - 시작인덱스를 기준으로 잘라낼 길이
+        var date = "20210624"
+        var year = date.slice(0, 4);
+        var year2 = date.substring(0, 4);
+        var year3 = date.substr(0, 4);
+
+        var month = date.slice(4, 6);
+        var month2 = date.substring(4, 6);
+        var month3 = date.substr(4, 2);
+
+        var day = date.slice(-2);
+        var day2 = date.substring(6);
+        var day3 = date.substr(6, 2);
+
+        var date = "2021.10.24"; //2021-10-24
+        // date.substring(0, date.indexof("."));
+        // date.substring(date.indexof(".") + 1, date.lastIndexOf("."));
+
+
+        var year = date.substr(0, 4);
+        var month = date.substr(5, 2);
+        var day = date.slice(-2);
+
+        console.log(year + "-" + month + "-" + day);
+        2
+        //replace -- email 보낼때, for문돌려서 .... 계속 바꿔 !
+        // var date = date.replace(".", "-")
+        // console.log(date.replace(".", "-"));
+        // console.log(date.replace(".", "-"));
+
+        console.log(date.replace(/\./g, "-"));
+
+        //toUpperCase() 
+        var tet = "Hello World";
+        console.log(txt.toUpperCase());
+
+        //toLowerCase() --서버랑 비교해서.. 
+        //어떤 식으로 던지든 -> 서버에서 받으면 걔를 소문자로 바꿔 , 
+        //자바스크립트에서 toUpperCase()를 하면 진짜로 값이 바뀌는것이고,
+        // html에 들어가면 안들어간다.
+        console.log(txt.toLowerCase());
+
+        //concat() - 문자열 
+        // + 
+        // var text1 = "Hello";
+        // var text2 = "World";
+        // console.log(text1.concat("", text2, "!"));
+
+
+        //공백을 없애기위해서 trim을 사용한다.
+        // var text = "    Hello World     ";
+        // console.log(text);
+        // console.log(text.trim());
+        //padStart
+
+        //padStart(). 첫번째 -문자열의 총길이, 두번째 -뭐로 채울래??
+        var txt = "5";
+        console.log(txt.padStart(2, 0));
+
+        //첫번째 문자열, 두번째 총길이, 세번째 뭘로 채울지..
+        //함수 - fillChar
+
+        // 19600014
+
+        // var person = {
+        //     str: "123",
+        //     num: 123,
+        //     what: "15"
+        // }
+
+
+        function fillChar(str, len, s) {
+            while (str.length < len) {
+                str = s + str;
+            }
+            return str;
+
+        }
+        console.log(fillChar("9", 4, 0));
+
+        var txt = 5;
+    </script>
+</body>
+
+</html>
