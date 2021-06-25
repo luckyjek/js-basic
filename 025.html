@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script src="./4-04.user_data.js"></script>
+    <script>
+        console.table(userList);
+        //table순서를 sort한다고?
+
+        console.table(userList[0].age);
+
+        //userList있는 멤버들의 age를 전부 다 가지고오고싶다. 
+        var len = userList.length;
+        console.table(len);
+
+        //for문을돌리면서 userList에있는 모든 멤버들의
+        //age를 가져온다. 
+        //i를 length만들 돌려서 하나씩 가져온다 -> 변수를만들어서 담아야되는데? 
+
+        //userList[i].age;
+        // for (var i = 0; i < )
+
+        var ageList = [];
+        for (var user of userList) {
+
+            //console.log(user.age);
+            ageList.push(user.age); //25
+            //console.log("list", ageList); //25
+
+            // if (user.age == 24) {
+            //     break;
+            // }
+
+
+        }
+
+        //배열에 담았는지 안담았는지 확인하기위해서 밖에서 돌려봐라.
+        console.log(ageList);
+    </script>
+
+
+</body>
+
+</html>

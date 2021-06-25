@@ -151,6 +151,42 @@
         //padEnd
         var txt = "5";
         console.log(txt.padEnd(4, 0));
+
+
+        //charAt() 위치에있는 딱 한글자만 가지고온다.
+        var txt = "Hello World";
+        console.log(txt.charAt(0)); //H
+
+        //charCodeAt()
+        console.log(txt.charCodeAt(0));
+
+        //split()       --배열로 보여준다.
+        //2021-06-25
+        var date = "2021-06-25";
+        var arr = date.split("-");
+        console.table(arr);
+
+        console.log(arr.join("/")) //배열은 하나의 string으로 해주는데, 
+
+        //내가원하는 문자열을 문자로 배열로 만들어준다.
+        // var tag = "#서울 #양평 #한경닷컴 #개발자품격 #잘한다";
+        // console.table(tag.split("#"));
+
+        //배열 join -->하나로 합쳐서 문자열로 보여준다.
+
+        //startsWith()
+        var url = "http://naver.com";
+
+        if (url.startsWith("http://") || url.startsWith("https://")) {
+
+        }
+
+        //endsWith() --boolean값으로 출력된다 왜? if문 즉, 조건문이기때문
+        var imageFile = "logo.jpg";
+        var isRightImageExtension = imageFile.endsWith(".png")
+        if (imageFile.endsWith(".jpg") || imageFile.endsWith(".jpg")) {
+
+        }
     </script>
 </body>
 

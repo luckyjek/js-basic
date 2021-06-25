@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        var x = 123;
+        x.toString();
+        //x + "";
+
+        //toExponential(); --지수형 숫자
+        //x.toExponential(2)
+
+        //toFixed() 
+        //소수점 2자리를 끊어서 표시한다! 반올림돼서 표시가된다.
+        //달러를 맞출때 표시한다! to Fixed - 금액을 다룰때 ! / 자리수를 맞추기위해! 
+        var x = 9.656; //Number객체 
+        console.log(x.toFixed(0)); //10
+        console.log(x.toFixed(4)); //9.6560
+
+        //toPrecison() 정수소수를 다 합쳐셔 몇 자리를 보여줄것이냐?
+        // (잘사용하지않아) console.log(x.toPrecision(2));
+
+        //parseInt() //문자를 숫자로 바꿔줌 많이사용! 
+        var x = "10";
+        //전역함수 (단독으로존재하는..)
+        console.log(parseInt(x)); //문자 10이아니고, 숫자 10이 된다.
+        console.log(parseInt("10.124")); //10 -> 정수형만 다룬다.
+        console.log(parseInt("10.66")); //10 -> 반올림도 안되고, 무조건 정수값만! 
+        console.log(parseInt("40 20 30 ")); //첫번째 발견된 숫자만 가져온다.
+        //Not a Number
+        console.log(parseInt("years 10 ")); //첫번째 발견된 숫자만 가져온다.
+
+        console.log(parseInt(" 10 years")); //첫번째 발견된 숫자만 가져온다.
+
+        //parseFloat()
+        //사용자가 keyIn한 값을 다 텍스트로 돌려준다.
+        //우리는 숫자를 받을라고 하는데, 웹에서는 문자로 돌려준다. 
+        //그래서 아래왜같은 parseFloat를 감싸줘야된다.
+        console.log(parseFloat("10.124"));
+
+        console.log(Number.MAX_VALUE);
+        console.log(Number.MAX_SAFE_INTEGER); //가장안전한 최대치는 이것
+        console.log(Number.MAX_MIN_VALUE); //가장안전한 최대치는 이것
+        console.log(Number.MAX_SAFE_INTEGER); //가장안전한 최대치는 이것
+        console.log(Number.POSITIVE_INFINITY);
+        console.log(Number.NEGATIVE_INFINITY);
+
+        //나누는 값중에 0이 계속 나눈다. 그래서 이러한 오류가났다. 
+        //시스템이 운영이되면서 저런 값이 들어오는순간 . Infinity를 알아야된다.
+
+        //console.log(3 / 0); // Infinity 무한대 
+    </script>
+</body>
+
+</html>
