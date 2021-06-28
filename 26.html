@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script src="scripts/common.js"></script>
+    <script>
+        //Math객체
+        //
+
+        //round() - 파라미터로 전달받은 숫자형 데이터를 반올림 처리 함
+        console.log(Math.round(4.9));
+        console.log(Math.round(4.4));
+        console.log(Math.round(-4.2));
+
+        //ceil() - 파라미터로 전달받은 숫자형 데이터를 '무조건 올림처리'해서 정수를 만듬
+        //게시판 화면보면, 게시글이 10개정도...있다고하면 
+        //게시글이 96개 한페이지에 10개씩 보여주고있다면,
+        //10번까지있다. 
+        //총페이지 개수 총 구하는것! 
+        console.log(Math.ceil(4.4));
+        console.log(Math.ceil(4.4));
+
+        //floor() -'무조건 내림'
+        console.log(Math.floor(4.9));
+
+        //trun() - 소수점 이하는 무조건 버리고 정수 부분만 반환 
+        console.log(Math.trunc(4.9));
+
+        //sign() - 숫자가 양수이면 1, 음수 -1, 0이면 0
+        console.log(Math.sign(0));
+
+        //pow() -제곱
+        console.log(Math.pow(8, 2));
+
+        //sqrt() -루트값
+        console.log(Math.sqrt(64)); //8
+
+        //sbs() absolute --음수이면, 음수 부호 없애고, 무조건 양수로 변환
+        console.log(Math.abs(-4.7)); //4.7
+
+        //min(), max()
+        console.log(Math.min(1, 23, 45, 3, 222));
+        console.log(Math.max(1, 23, 45, 3, 222));
+
+        //random() - 실행할때 마다 무작위 숫자형 데이터가 나오는데,
+        // 0보다 크고, 1보다 작은 수 
+        console.log(Math.random());
+        console.log(Math.floor(Math.random() * 10) + 1);
+        console.log(Math.floor(Math.random() * 100) + 1);
+
+        function getRandomInterger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        console.log(getRandomInterger(1, 10));
+
+        //가위, 바위 , 보 게임함수 만들기
+        //함수명 - rspPlayer
+        //파라미터 1개 - "가위","바위","보"
+
+        //함수안에 변수로 
+        //const arrRsp =["가위","바위","보"];
+        //random함수를 써서 0~2까지 정수를 무작위로 나오게해서...
+
+        //이것을arrRsp 배열에 인덱스번호를 넣으면 
+        //return {userRsp:"", playerRsp:"", winner:이기면 1, 지면 -1, 무승부면 0}
+
+        // console.clear();
+        // let game = Math.floor(Math.random() * 2 + 1);
+
+
+        // var gameUser = [{
+        //     userRsp: "",
+
+        //     playerRsp: "",
+
+        //     winner: ""
+        // }]
+
+        // function game() {
+
+        //     const arrRsp = ["가위", "바위", "보"];
+
+        //     Math.floor(Math.random() * (max - min + 1)) + min;
+
+        //     return arrRsp;
+
+        // }
+
+        // console.log(game());
+
+
+
+        //if문으로 하는거 
+
+        //알고리즘을 다시 짜본다. 
+
+        // function rspPlayer(userRsp) {
+        //     const rsp = ["가위", "바위", "보"];
+        //     const playerRsp = rsp[getRandomInterger(0, 2)];
+
+        //     if (userRsp == playerRsp) {
+        //         return {
+        //             "userRsp": userRsp,
+        //             "rspPlayer": playerRsp,
+        //             "winner": 0
+        //         };
+        //     } else if (userRsp == "가위") {
+        //         if (playerRsp == "보") {
+        //             return {
+        //                 "userRsp": userRsp,
+        //                 "rspPlayer": playerRsp,
+        //                 "winner": 1
+        //             };
+        //         } else {
+        //             return {
+        //                 "userRsp": userRsp,
+        //                 "rspPlayer": playerRsp,
+        //                 "winner": -1
+        //             };
+        //         }
+        //     }
+        // }
+
+        //console.table(rspPlayer("가위"));
+
+
+        function rspPlayer2(userRsp) {
+            const rsp = ["가위", "바위", "보"];
+            const playerRsp = rsp[getRandomInterger(0, 2)];
+            const winValue = {
+                "가위": "보",
+                "바위": "가위",
+                "보": "바위",
+            };
+
+            // console.log(winValue[userRsp]);
+
+            // userRsp == playerRsp //0
+            return {
+                "userRsp": userRsp,
+                "playerRsp": playerRsp,
+                "winner": (userRsp == playerRsp) ? 0 : (winValue[userRsp] == playerRsp) ? 1 : -1
+            }
+        }
+
+        // rspPlayer2("가위");
+        console.table(rspPlayer2("바위"));
+    </script>
+</body>
+
+</html>

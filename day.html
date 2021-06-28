@@ -1,0 +1,75 @@
+    <!DOCTYPE html>
+
+    <head>
+        <title>Java Script</title>
+    </head>
+
+    <body>
+        <script src="scripts/moment.min.js"></script>
+        <!--절대주소 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script> -->
+        <script src="./4-04.user_data.js"></script>
+        <script>
+            var oUser = {}; //key value가없는 오브젝트(객체)를만든다.  문자열로만 선언할수있따.
+            //map이랑 다른다.
+            //oUser라는 객체안에 for문이 돌면서 하나하나씩 들어갈꺼야.
+
+            //oUser["female"] = 1;
+
+            // oUser ={
+            //     "female" : 1,
+            //     "male" :1,
+            // }
+
+            console.log(oUser["female"]);
+            if (undefined) { //false의 역할을한다.
+                console.log('정수');
+            }
+
+            if (0) { //0 -false 후에 다른 숫자가들어가면 '정수'라고 실행이된다.
+                console.log('정수');
+            }
+
+
+
+            for (var user of userList) {
+
+                if (oUser[user.gender]) {
+                    //3번쨰 돌렸을때 안에 1이있다! 그전에는 0이였다. 
+                    //처음에 돌 때 객체안에 텅텅비어있어서 
+                    //user.geder를 물었는데, 없는거야!
+                    //후에, 키가 없으니까 아래로 내려가!
+                    // oUser ={
+                    //     "female" :  -(없는상태),
+                    // }
+                    ////oUser["female"] = 2; 3인덱스
+                    oUser[user.gender] += 1;
+                } else {
+                    //처음에 female을 저장시켜. 1로! 
+                    oUser[user.gender] = 1;
+                    //oUser["female"] = 1; 0인덱스
+                    //oUser["male"] = 1; 1인덱스
+                }
+            }
+
+            // console.table(oUser);
+
+
+
+
+
+            //몇일 뒤, 몇일 후 등...
+            // console.log(moment().add(05, "dya").format("YYYY-MM-DD"));
+            console.log(moment().add(05, "dya").format("MMM Do YYYY"));
+
+
+
+            var region = {};
+            region["서울"] = "";
+        </script>
+    </body>
+
+    </html>

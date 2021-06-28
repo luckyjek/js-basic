@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        //JSON객체
+        //JSON - JavaScript Object Notation
+        //데이터를 서로 주고받을때 서버 통신 포멧 형식 을 JSON이라고한다.
+
+
+        //const newsList = 
+
+        //Object형태인것만 가능
+        //
+
+
+        //stringify 
+
+        //웹개발 데이터  --> JSON 포멧을 쓰게된다.
+        var productList = {
+            "data": [{
+                    name: "솔의눈",
+                    price: 700
+                }, {
+                    name: "커피",
+                    price: 700
+                },
+                {
+                    name: "파워레이드",
+                    price: 1200
+                },
+                {
+                    name: "오렌지",
+                    price: 1000
+                },
+                {
+                    name: "보리차",
+                    price: 1200
+                }, {
+                    name: "밀키스",
+                    price: 800
+                },
+
+            ]
+        };
+
+        var jsonString = JSON.stringify(productList);
+
+        console.log(jsonString);
+
+        //parse로통해 다시 Object로 만든다.
+        var jsonObject = JSON.parse(jsonString);
+
+        console.log(jsonObject);
+    </script>
+</body>
+
+</html>

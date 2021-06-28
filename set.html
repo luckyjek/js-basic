@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        //set객체 - > 배열과 유사한 함수
+        //똑같은 값을 추가할수없고, 유일한 값이여야한다.
+
+        //모든객체가 new로 만들어지만, 약식으로사용  
+        //set객체 -> 근데set객체는 약식이없다 그래서 정상적으로 new를 사용해야된다.
+        //배열객체랑 굉장히 유사하다. -> 순차적으로 가져온다.
+
+        //var arr = [];
+        //var arr = new Array();
+        // arr.push(1);
+        // arr.push(3);
+        // console.log(arr);
+
+        var mySet = new Set(); //동일한 값을 가질수없다.  왜? -> has라는 함수를 가지고있기때문에
+        //이는 동일한 함수가 없으니까 has라는 함수를 사용할ㅇ수있다. 
+
+        //어떨때 사용하나? 
+        //set을 돌리면 , 다 남아있다가 실제 몇개의 지역 사람들이 이용하고있는가? 
+        //유일한 값만 보장하고싶고 
+        //Object -> 옜날에 set이없을때 이걸이용했었다.
+        mySet.add(1);
+        mySet.add(3);
+        mySet.add(12);
+        // mySet.add(3);
+        mySet.has(3);
+
+        mySet.delete
+        console.log(mySet);
+    </script>
+</body>
+
+</html>
