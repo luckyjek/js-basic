@@ -5,60 +5,56 @@
 </head>
 
 <body>
-
-    <button type="button" onclick="deleteItem();">삭제</button>
-    <a href="https://naver.com" target="_blank">Naver</a>
+    <!-- 사용자가 클릭하면 이벤트를 계속 실행하는것이다!  -->
+    <button type="button" onclick="doSearch(this)"> 조회</button>
+    <!--select는 선택하는 개념이고, 바꿀수있으며 따라서
+    내부적으로 체인지 이벤트를 가지고있다. 그리고
+이벤트앞에는 on이라는것을 계쏙 붙인다! 
+-->
+    <select name="" id="" onchange="doChange(this)">
+        <option value="1">A</option>
+        <option value="2">B</option>
+        <option value="3">C</option>
+        <option value="4">D</option>
+    </select>
     <script>
-        //Window 객체 - 전역객체, Global 객체 
-        // alert("이것은 alert창입니다.");
+        //this는 -> 용도, 상황 등에따라 달라진다 
+        //this키워드 의미하는것. 첫번째. this = Window객체
+        console.log(this);
 
-        //오른쪽에 소장하시겠습니까!? 
-        // if (confirm("정말 삭제하시겠습니까?")) {
-        //     //삭제 로직
-        // }
+        function myFunction() {
+            console.log(this);
+        }
+
+        myFunction();
+
+        function doSearch(obj) {
+            console.log(obj);
+        }
+        //두번째 this
+        //이벤트가일어나는 요소! 그 자체가온다
+        //즉HTML DOM요소에서 이벤트가 수행이 될때 호출하는 함수에 this를
+        //파라미터 값으로 전달하면, 이때 this는 이벤트가 일어나는
+        //HTML DOM요소 그 자체를 의미 
 
 
-        // var pass = prompt("비밀번호를 입력하세요.");
-        // console.log(pass);
-        // if (pass == null) {
-        //     //취소버튼누른경우
-        // } else if (pass == "") {
-
-        // } else if (pass != "") {
-        //     console.log(pass);
-        // }
+        function doChange(obj) {
+            console.log(obj);
+            console.log(obj.value); //value를 쉽게 가져올수있다.
+        }
 
 
-        // window.open("https://naver.com");
-
-        //setTimeout()
-
-        //1초뒤 딱 한번
-        // setTimeout(function () {
-        //     alert("프로그램 실행");
-        // }, 1000);
-
-        //1초마다 계속.....실행
-        // setInterval(function () {
-        //     console.log("프로그램 실행")
-        // }, 1000);
-
-        var count = 0;
-
-        var fnc = setInterval(function () {
-            if (count < 5) {
-                console.log("프로그램 실행:" + count);
-                count++;
+        //세번째 this
+        let person = {
+            firstName: "John",
+            lastName: "Doe",
+            getFullName: function () { //Object안에서의 함수의 this는 Object전체를의미한다. 
+                return this.firstName + " " + lastName;
             }
-            console.log("종료");
-            clearInterval(fnc);
-        }, 1000);
+        }
 
-        // function deleteItem() {
-        //     if (confirm("정말 삭제하시겠습니까?")) {
-        //         //삭제로직
-        //     }
-        // }
+        // person.firstName
+        // person["firstName"]
     </script>
 </body>
 
