@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        //try-catch 에러가나도 중요한 함수를 만들때는 무조건 만들어준다! 
+        try {
+            console.log("콘솔에 출력");
+
+        } catch (error) {
+            console.log(error.name);
+            console.log(error.message);
+        }
+
+
+        var x = 2;
+        var y = 3;
+        try {
+            if (x == 0) {
+                //throw만나면 무조건 catch로간다.
+                throw "value is zero.";
+            }
+        } catch (error) {
+
+            console.log(error);
+
+        } finally { //정상적이든 에러가나든 무조건 finally를 실행시킨다.
+
+            console.log("try/catch를 모두 실행한 후 반드시 실행하는 부분");
+
+        }
+    </script>
+</body>
+
+</html>

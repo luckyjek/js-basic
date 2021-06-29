@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        //Promise방식
+        // const url = "https://07495398-ac0d-4c0e-a4a1-0b565ccd5d11.mock.pstmn.io/getUserList";
+        // const url = "https://07495398-ac0d-4c0e-a4a1-0b565ccd5d11.mock.pstmn.io/getDrinkList";
+        const url = "https://07495398-ac0d-4c0e-a4a1-0b565ccd5d11.mock.pstmn.io/"; //mock에서 기본으로 주어지는 url
+
+        // var data = axios.get(url);
+
+        // console.log(data);
+
+        // function getData() {
+        //     return new Promise(function (resolve, reject) { //reject는 서버에서 오류를 보내줄때도있다. 
+        //         axios.get(url).then(function (response) {
+        //             resolve(response.data);
+        //         });
+        //     });
+        // }
+
+        // getData().then(function (data) {
+        //     console.log(data);
+        // });
+        function getData() {
+            return new Promise(function (resolve, reject) {
+
+                // reject(new Error("Request is failed"));
+                axios.get(url).then(function (response) {
+                    resolve(response.data);
+                });
+            });
+        }
+
+        getData().then(function (jsonData) {
+            console.log(jsonData.data);
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+        //Async-Await (Promise방식 보다 선호)
+
+        //비동기 방식으로 처리한다.
+
+        //호출하면 뭐든 던저주면 api (url)주는 함수 
+        //function 앞에 async - await 이 두개는 한쌍이다! 그렇게 규약을 만들어놨다.
+        // async function api(url) {
+        //     //await axios. 받아올때까지 기다리겠다!
+        //     return (await axios.get(url)).data;
+        // }
+
+        // async function getData(path) {
+        //     var data = (await api(url + path));
+        //     console.log(path, data);
+        // }
+
+        // async function getUserList() {
+        //     var data = (await api(url + "getUserList"));
+        //     console.log(data);
+        // }
+        // async function getUserList() {
+        //     var data = (await api(url + "getDrinkList"));
+        //     console.log(data);
+        // }
+
+        //getUserList();
+        // getData("getUserList");
+        // getData("getDrinkList");
+
+        //fetch()
+        fetch(url + "getUserList").then(function (response) {
+            return response.json(); //데이터를 json으로 바꿔준다 그래서
+        }).then(function (data) { //then으로써서 그 데이터를 다 받아온후 , console.log(date)를 찍어준다.
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

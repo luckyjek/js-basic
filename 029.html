@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        //Default Function Parameter - 함수의 파라미터 기본값(기본값을 지정해놓는 기능이라고생각하기)
+        function say(message = "파라미터가 안들어왔네요.") {
+            console.log(message);
+        }
+
+        //say("파라미터전달");
+        //say(); //undefined -> Default Function Parameter
+
+        //함수를 호출하는곳에서 파라미터를 실수로 안넘겼을때, 
+        //안넘어왔을때 기본으로 만들어 설정으로 만들어놓는다. -> 기본 파라미터 
+
+        function add(x1 = 1, x2 = 1) {
+            if (x1 != undefined && x2 != undefined) {
+                return x1 + x2;
+            } else {
+
+            }
+
+        }
+
+        console.log(add()); //파마미터 전달안했을때 1+1 기본 설정이 return이 된다.
+
+        //비행기좌석  예매 
+        //티켓수를 디폴트로 1를 해놓으면, 
+        //사이즈가 큰 데이터의 경우, 
+        //클라이언트 서버로 던질때마다 트래픽이 발생하는데, 
+        //데이터를 쓰는것이다. => 네트워크 비용이 발생
+
+        //보통 사용자로부터 입력을 받고 -> 이게맞냐 ? -> 서버에 던지기!  
+    </script>
+</body>
+
+</html>

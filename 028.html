@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        //Scope - 선언된 변수에 대한 접근성을 의미
+
+        let carName = "기아"; //Global Scope 전역스코프
+        //let carName = "";
+
+        //밖에서는 함수안에 선언된 csrName을 접근할수없다.
+
+        function myFunction() {
+            let carName = "볼보"; //Local Scope
+            console.log(carName);
+        }
+
+        //함수안에서만 선언이 가능하다. 
+
+        //let carName = "기아"; //밖에있는 carName 과 안에있는 carName은 다른스코프를가지므로 
+        // 이제는 찍힌다.
+        //console.log(carName);
+        myFunction();
+
+
+        //그 변수가 함수안에서만 필요하면  ? 그때는 함수안에서 하는게 좋은것이다.
+        //왜? 다른 곳이랑 영향을 안미치니까 말이다.
+
+        // var sum = 0;
+        // function add(x1, x2) {
+        //     sum = x1 + x2;
+        //     return sum;
+        // }
+        //위와 비교를한다면 , 아래와같이 쓰는것이 안전하다 .  -> 누가 함부로 바꿀 수 없기때문 
+        function add(x1, x2) {
+            var sum = x1 + x2;
+            return sum;
+        }
+
+        console.log(add(5, 2));
+
+
+
+        //계속 합산을 하고싶다면, 전역번수로한다.
+
+        //var total = 0; //계속 합산이된다. (전역번수)
+
+        function getDrink(inputCoin) {
+            var total = 0; //따로따로 나온다.
+            total += inputCoin;
+            return total;
+        }
+
+        console.log(getDrink(500));
+        console.log(getDrink(2000));
+    </script>
+</body>
+
+</html>
