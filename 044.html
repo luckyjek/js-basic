@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <button onclick="myFunction();">클릭</button>
+  <button id="btn">클릭</button> -->
+    <button id="btn">클릭</button>
+
+    <select name="" id="" onchange="selectCountry(this);">
+        <option value="">국가를 선택하세요.</option>
+        <option value="ko">대한민국</option>
+        <option value="jp">일본</option>
+    </select>
+    <select name="" id="sel_city"></select>
+    <script>
+        var cities = [{
+                countryCode: "ko",
+                cityCode: "02",
+                cityName: "서울"
+            },
+            {
+                countryCode: "ko",
+                cityCode: "064",
+                cityName: "제주"
+            },
+            {
+                countryCode: "jp",
+                cityCode: "11",
+                cityName: "도쿄"
+            }
+        ];
+
+        var oCity = {};
+        for (var city of cities) {
+            if (!oCity[city.countryCode]) {
+                oCity[city.countryCode] = [];
+            }
+
+            oCity[city.countryCode].push(city);
+        }
+
+        console.log(oCity);
+
+
+        // var oCity = {
+        //   "ko": [{
+        //       cityCode: "02",
+        //       cityName: "서울"
+        //     },
+        //     {
+        //       cityCode: "064",
+        //       cityName: "제주"
+        //     }
+        //   ],
+        //   "jp": [{
+        //     cityCode: "11",
+        //     cityName: "도쿄"
+        //   }]
+        // };
+
+        function selectCountry(ele) {
+            console.log(ele.value);
+            var h = [];
+            if (ele.value != "") {
+                console.log(oCity[ele.value]);
+                for (var city of oCity[ele.value]) {
+                    h.push(`<option value="${city.cityCode}">${city.cityName}</option>`);
+                }
+            }
+
+            // console.log(h.join(""));
+
+            document.getElementById("sel_city").innerHTML = h.join("");
+        }
+
+        function myFunction() {
+            console.log("이벤트 onclick를 통해서 발생");
+        }
+        //addEventListener
+        document.getElementById("btn").addEventListener("click", function () {
+            console.log("이벤트 클릭");
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- <!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+   <button onclick="myFunction();">클릭</button> 
+        이렇게하면 고객이 onclick이거를 내가 다시 넣어줘야돼...-->
+<!-- id는 btn으로 넣어주세요! / 퍼브리셔랑 미리 약속을한다. 중요 요소에 id, name! 
+    따라서 html다 바꾸고, 디자인을바꾸게된다면 id만 바꿔서 넣어주면 , 
+    직접이벤트를 걸지않고 2번쨰로하면 손을델게 많이없다! 왜 ? 직접 이벤트를 걸지않았기때문에! 
+    PM 플젝트매니저가 설계하는시점부터 유기적으로 어떻게 효율을 낼 수 있는가? 
+    에 따라 달렸다! 
+
+<button id="btn">클릭</button>
+ <button>클릭</button> 웹디자이너부터 받은! 
+
+<script>
+    function myFunction() {
+        console.log("이벤트 onclick를 통해서 발생");
+    }
+
+    //addEventListener 2번째 방법을 선호한다.
+    //누군가랑 협업할때 1,2가 차이난다.
+    //웹디자이너 웹퍼블리셔는 onclick함수 --여기 click은 뭐였지? 
+    document.getElementById("btn").addEventListener("click", myFunction)
+</script>
+</body>
+
+</html> -->

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <input type="text" name="" id="txt1"><br>
+    <input type="text" name="" id="txt2"><br>
+    <button onclick="myFunction()"> 조회 </button>
+
+    <p>ABC</p>
+    <p>DEF</p>
+
+    <h2>당신이 관심있어 하는 프로그래밍 언어는?</h2>
+    <lavel for="">
+        <input type="checkbox" name="chk_interest" id="" value="js">자바스크립트
+    </lavel>
+    <lavel for="">
+        <input type="checkbox" name="chk_interest" id="" value="html">HTML
+    </lavel>
+    <lavel for="">
+        <input type="checkbox" name="chk_interest" id="" value="css">CSS
+    </lavel>
+
+    <!-- value는 데이터베이스에 저장하는 값!  -->
+    <div>
+        <label for=""><input type="radio" name="city" id="" value="제주">제주</label>
+    </div>
+    <div>
+        <label for=""><input type="radio" name="city" id="" value="제주">서울</label>
+    </div>
+    <div>
+        <label for=""><input type="radio" name="city" id="" value="제주">부산</label>
+    </div>
+    <div>
+        <button onclick="myFunction()"> 조회</button>
+    </div>
+
+    <!-- <div style="margin-top: 20px;">
+        <button onclick="myFunction()" id=""> 조회</button>
+    </div> -->
+    <div style="margin-top: 20px;">
+        <button onclick="myFunction();" id="btnSave" style="padding:10px;"> 저장</button>
+        <!-- <button onclick="myFunction(this);" id="btnSave" style="padding:10px;"> 저장</button>-->
+        <!-- 어떤 이벤트가 일어나는지 알려준다.    // console.log(e); -->
+        <!--<button onclick="myFunction(event);" id="btnSave" style="padding:10px;"> 저장</button> -->
+    </div>
+
+    <script>
+        //사용자가 입력한거 (그 값이 필요하니까! ) -> value 라는 속성에 다 들어간다 ! 불러오기? 접근할수있는 방법은 ? 
+        //document -- 3개 속성 + css접근 요소를 할때는 querySelectorAll 이용! 
+
+        function myFunction() {
+
+            // 상황에 따라 여러가지 방식을 사용할 수 있는데, this , event ,myFunction() 각각 적절한 곳에 사용할 수 있어야된다!
+            //function myFunction(#btnSave) {
+            //function myFunction(e) {
+            //var btnEle = e.target;
+            // console.log(e);
+
+            var btnEle = document.querySelector("#btnSave")
+            //모든 요소의 같은 id가 있는지 다 찾는데, 성능 저하이므로 
+            document.querySelector("#btnSave").disabled = true;
+
+            //사용자가 입력한 값을 가져와서 오브젝트를 만든후 -> 서버쪽에 던지고
+            //서버에서 정상적으로 저장됐다고 신호를 주고난후 다시 -> false를해준다
+
+            setTimeout(function () {
+                // document.querySelector("#btnSave").disabled = false;
+                btnEle.disabled = false;
+            }, 2000);
+
+
+
+
+
+
+            //id를가지고오겠다!뭐를? txt1을! -> 하나만! s가없음! 
+            //속성의 값 을 가지고오고싶으면 .을이용!  
+            // var ele = document.getElementById("txt1")
+            // console.log(ele);
+
+
+            // var ele = document.querySelector("#txt1");
+            // console.log(ele);
+            //사용자가 입력하는 그리고 선택하는 모든 값은 value에 다 들어가있다! 
+            // var txt1Value = ele.value;
+            // console.log(txt1Value);
+
+
+            // var ele2 = document.getElementById("txt2")
+            // ele2.value = "가나다"; //바꾸고싶을때! getAttribute setAttribute와 . 으로 바꿔서 가능!
+            // ele2.value = "가나다";
+
+
+
+
+            //s가 붙었다! -> s가붙어있어서 배열로 리턴해준다! 
+            // var pTag = document.getElementsByTagName("p");
+            // console.log(pTag);
+
+            // var chks = document.getElementsByName("chk_interest");
+            // console.log(chks);
+
+            // document.querySelectorAll("p"); //tag네임으로가져오는거
+
+            // document.querySelectorAll("[name=chk_interest]"); //속성으로 가져올때 
+
+            //사용자가 어떤것을체크했는지 알기위해서 이렇게 하면된다! 
+            //for문을 돌려서 사용! 
+            // for (var chk of chks) {
+            //     if (chk.checked) {
+            //         console.log(chk.value);
+            //     } else {
+
+            //     }
+            // }
+            //여기안에 우리가 알고있는 css selet? 문법을 넣을수있다.
+            //css속성을 어트리뷰트를 접근할수있는부분을 
+            //가지고 있는애 예를들어 체크되어있는것들을 가져와라!이런거 
+            // var checkedItems = document.querySelectorAll("[name=chk_interest]:checked");
+            // for (var chk of checkedItems) {
+            //     console.log(chk.value);
+            // }
+            // document.getElementsByClassName --이런것도있다. (새로운)
+
+            //CSS또한 걔를 통해서 돔에 접근을 할 수 있다. 
+        }
+
+
+
+        // console.log(document.querySelector("[name=city]:checked").value);
+
+
+
+        // html 컨트롤 하는 방법 -> html 돔요 접근
+        // 순서가있다
+        // DOM요소에 일단은 접근을 해야된다.
+        // 그래야 값을 읽어오던, 값을 주던, 스타일을 바꾸던 이벤트를 캐치를하던...
+        // 1.그럼 어떻게 접근할수있나?
+        // 속성 정보를 어떻게 접근하고 바꿀수있나? 
+    </script>
+</body>
+
+</html>

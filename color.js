@@ -4,7 +4,7 @@ var age;
 birthYear = prompt("태어난 연도를 입력하세요. (YYYY)", "");
 age = currentYear - birthYear + 1;
 document.write(currentYear + "년 현재<br>");
-document.write(birthYear+"년에 태어난 사람의 나이는"+age+"세 입니다.");
+document.write(birthYear + "년에 태어난 사람의 나이는" + age + "세 입니다.");
 
 
 // var now = new Date();
@@ -14,8 +14,8 @@ document.write(birthYear+"년에 태어난 사람의 나이는"+age+"세 입니�
 // var name=prompt("이름을 입력하세요.");
 // console.log(name+"님, 환영합니다.");
 
-  // var name = prompt("이름을 입력하세요."); 
-  // document.write("<b><big>"+ name +"</big></b>,님 환영합니다.");
+// var name = prompt("이름을 입력하세요."); 
+// document.write("<b><big>"+ name +"</big></b>,님 환영합니다.");
 
 //document.write("<h1>어서오세요</h1>");
 

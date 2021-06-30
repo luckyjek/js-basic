@@ -1,11 +1,9 @@
 //Template Literals
 //Hello Jeremy. Welcome!
 
-function hello(name) {
-
-    console.log("Hello" + name + ".Wlecome!");
-
-}
+// function hello(name) {
+//     console.log("Hello" + name + ".Wlecome!");
+// }
 
 
 //Template Literals사용하여 문자열을 이용한다.

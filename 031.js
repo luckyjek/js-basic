@@ -22,9 +22,6 @@ var add2 = (x1, x2) => {
     return sum;
 }
 
-
-
-
 //비교 -- 무조건 변수안에 넣어줘야된다. -- 스코프 개념이 무조건 들어간다.
 function say(message) {}
 

@@ -10,8 +10,7 @@ var person = {
     firstName: firstName,
     lastName: lastName
 }
-
-// person[firstName]
+person[firstName]
 
 var type = "student";
 var score = {

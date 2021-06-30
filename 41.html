@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <!-- 조회하는 화면을 -> 그래서 결과화면할때 테이블로 만들어줘야되는데 그럴때 이렇게 사용! -->
+    <div id="div1"></div>
+    <h2>H2 영역입니다.</h2>
+    <script>
+        // html안에 <h1>Hello World</h1> 얘를 넣어줘! 라고한거야! 
+        document.querySelector("#div1").innerHTML = '<h1>Hello World</h1>';
+        //배열로 접근하므로 [0]을해줘야된다. HTML이 삽입니아닌 Text! 
+        document.querySelectorAll("h2")[0].innerText = 'H2영역이 바뀌었습니다.';
+    </script>
+</body>
+
+</html>
