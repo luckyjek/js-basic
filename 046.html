@@ -16,12 +16,16 @@
     <input type="tel" name="" id="tel3" maxlength="4">
     <input type="search" name="" id="" onkeypress="checkEnter(event);">
     <script>
+        //입력할수있는 모든요소에는 key이벤트를 사용할 수 있다.
         //key 이벤트
         //keydown
         //keypress
         //keyup
+
         function myFunction(id, len, e) {
+            //e는 요소의 모든 것을 다 가져온다!  <input type="tel" name="" id="" maxlength="3" onkeyup="myFunction('tel2', 3,event);">-
             if (e.target.value.length == len) {
+                //내가 지정한 id에 대한 focus로 옮겨라!
                 document.getElementById(id).focus();
             }
             // console.log(e.type);
@@ -34,6 +38,7 @@
 
         function checkEnter(e) {
             console.log(e.keyCode);
+            //enterkey 이다!  onkeypress
             if (e.keyCode == 13) {
                 doSearch();
             }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Java Script</title>
+</head>
+
+<body>
+    <script>
+        var d = new Date();
+        console.log(d);
+        var year = d.getFullYear();
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+
+        // if (month < 10) month = "0" + month;
+
+        //2자리인데 0을채워줘! padStart를이용한다.
+        //month는숫자야! 그래서 스트링으로바꿔주고 -> 스트링객체 내장함수를 사용한것이다.
+        console.log(year + "-" + month.toString().padStart(2, 0) + "-" + day);
+
+        //밀리세컨트는 -> 초!  1970년 1월 1일을 기준으로 ! 
+        console.log(d.getTime()); //1625047570097
+
+        //하루는 일초는1000 일분은 60초 *60분 *24시간 = 하루! 
+        var d2 = new Date(1625047570097 + (5 * 60 * 60 * 24 * 1000));
+        var d22 = new Date(d.getTime() + (5 * 60 * 60 * 24 * 1000));
+        console.log(d2);
+        console.log(d22);
+    </script>
+</body>
+
+</html>
