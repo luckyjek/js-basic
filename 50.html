@@ -103,8 +103,10 @@
 
             if (amount <= total_customer_amount) {
                 //10100원 = 10000 + 100원
+                console.log('amount', amount);
                 total_input_amount += amount; //투입금액 넣은금액의 합을 관리하기위함
                 //9900원 = 10000 - 100원
+                console.log('amount', amount);
                 total_customer_amount -= amount; //투입한 금액만큼 빼준거야
 
                 total_vending_amount += amount;
@@ -115,7 +117,7 @@
 
                         console.log(document.getElementById("btnDrink" + drink.drinkId))
 
-                        document.getElementById("btnDrink" + drink.drinkId).style.backgroundColor = "black";
+                        document.getElementById("btnDrink" + drink.drinkId).style.backgroundColor = "yellow";
                     }
                 }
                 //document안에 넣는건가? 

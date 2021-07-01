@@ -27,14 +27,15 @@
     <div class="drinkMc">
 
         <div calss="drinkMc_front">
-            <div calss="drinkL"><input type="button" value="코카콜라 700원" id="co" onclick="requestDrink(1);"></div>
-            <div calss="drinkL"><input type="button" value="오렌지주스 1200원" onclick="requestDrink(2);"></div>
-            <div calss="drinkL"><input type="button" value="커피 500원" onclick="requestDrink(3);"></div>
+            <div calss="drinkL"><input type="button" value="코카콜라 700원" id="btnDrink1" onclick="requestDrink(1);"></div>
+            <div calss="drinkL"><input type="button" value="오렌지주스 1200원" id="btnDrink2" onclick="requestDrink(2);">
+            </div>
+            <div calss="drinkL"><input type="button" value="커피 500원" id="btnDrink3" onclick="requestDrink(3);"></div>
         </div>
         <div calss="drinkMc_back">
-            <div name="drinkL"><input type="button" value="물 700원" onclick="requestDrink(4);"></div>
-            <div name="drinkL"><input type="button" value="보리차 1200원" onclick="requestDrink(5);"></div>
-            <div name="drinkL"><input type="button" value="포카리 1000원" onclick="requestDrink(6);"></div>
+            <div name="drinkL"><input type="button" value="물 700원" id="btnDrink4" onclick="requestDrink(4);"></div>
+            <div name="drinkL"><input type="button" value="보리차 1200원" id="btnDrink5" onclick="requestDrink(5);"></div>
+            <div name="drinkL"><input type="button" value="포카리 1000원" id="btnDrink6" onclick="requestDrink(6);"></div>
         </div>
         <div>
             <button onclick="inputAmount(100);">100원</button>
@@ -42,77 +43,98 @@
             <button onclick="inputAmount(1000);">1000원</button>
         </div>
         <!-- <div name="drinkL"><input type="button" value="뽀로로 1300원"></div> -->
-
-
-        <!-- <input class=absolute type="text">  -->
-        <ul class=absolute>
-
-        </ul>
-
-    </div>
-    <script src="./drink.js"></script>
-
-    <script>
-        let total_vending_amount = 1000;
-        let total_customer_amount = 10000; //고객이 처음 가지고있는 돈
-        let total_input_amount = 0;
-
-
-        function myFunction() {
-            // insert ad adjust > p태그 
-            var addHTML = "<li>새로운 항목</li>";
-            document.getElementById("myUL").insertAdjacentHTML("beforeend", addHTML);
-        }
-
-        //고객이 돈을 넣는함수
-        var sum = function inputAmount(amount) {
-
-            //입력한 돈이 고객의 지갑에 있는 돈 보다 같거나 작은지 확인
-            console.log(amount);
+        <div id="output" style="width:100%;height:150px;overflow-y: auto;border:2px solid #222;">
 
 
 
-            return amount;
+        </div>
+        <script src="./drink.js"></script>
+
+        <script>
+            let total_vending_amount = 1000;
+            let total_customer_amount = 10000; //고객이 처음 가지고있는 돈
+            let total_input_amount = 0;
+
+
+            function myFunction() {
+                // insert ad adjust > p태그 
+                var addHTML = "<li>새로운 항목</li>";
+                document.getElementById("myUL").insertAdjacentHTML("beforeend", addHTML);
+            }
+
+            //고객이 돈을 넣는함수
+            function inputAmount(amount) {
+
+                var output = document.getElementById("output");
+
+                console.log(amount);
+                //입력한 돈이 고객의 지갑에 있는 돈 보다 같거나 작은지 확인
+                if (amount <= total_customer_amount) {
+                    total_input_amount += amount; //
+
+                    total_customer_amount -= amount;
+
+                    total_vending_amount += amount;
+
+                    for (var drink of drinkList) {
+                        if (drink.price <= total_input_amount) {
+                            console.log(document.getElementById("btnDrink" + drink.drinkId))
+
+                            document.getElementById("btnDrink" + drink.drinkId).style.backgroundColor = "yello";
+                        }
+                    }
 
 
 
-        }
+                    document.getElementById("total_input_amount").value = total_input_amount;
+                    document.getElementById("total_customer_amount").value = total_customer_amount;
+                    document.getElementById("total_vending_amount").value = total_vending_amount;
 
-        function requestDrink(drinkId) {
-            //음료목록에서 현재 선택한 음료를 가져온다.
-            console.log(drinkList);
-            console.log(drinkId);
+                    output.insertAdjacentHTML("beforeend", `<p>${amount}이 투입되었습니다.</p>`);
+                    output.insertAdjacentHTML("beforeend", `<p>총 투입 금액은 ${total_input_amount}입니다.</p>`);
+                    output.insertAdjacentHTML("beforeend", `<p>당신의 지갑에는 ${total_customer_amount}이 남아 있습니다.</p>`);
 
-            var drinkObj = null;
-            for (var drink of drinkList) {
-                if (drink.drinkId == drinkId) {
-                    drinkObj = drink;
-                    console.log(drinkObj.stock);
                 }
+
+                output.scrollTop = output.scrollHeight;
+
             }
-            console.log(drinkObj);
-            //만일 선택한 음료의 재고가 남아 있다면?
-            console.log(drinkObj.stock);
-            if (drinkObj.stock >= 0) {
-                let result = drinkObj.stock - 1
-                console.log(result);
+
+            function requestDrink(drinkId) {
+                //음료목록에서 현재 선택한 음료를 가져온다.
+                console.log(drinkList);
+                console.log(drinkId);
+
+                var drinkObj = null;
+                for (var drink of drinkList) {
+                    if (drink.drinkId == drinkId) {
+                        drinkObj = drink;
+                        console.log(drinkObj.stock);
+                    }
+                }
+                console.log(drinkObj);
+                //만일 선택한 음료의 재고가 남아 있다면?
+                console.log(drinkObj.stock);
+                if (drinkObj.stock >= 0) {
+                    let result = drinkObj.stock - 1
+                    console.log(result);
+                }
+                //만일 총 투입금액이 음료의 가격보다 같거나 크다면?
+                // if (sum >= ) {
+
             }
-            //만일 총 투입금액이 음료의 가격보다 같거나 크다면?
-            // if (sum >= ) {
-
-        }
 
 
-        //document.getElementById(co)
-        // console.log(drinkList[0].drinkName)
-        // if (drinkList.drinkId == "1") {
-        //     console.log(drinkList.drinkName);
+            //document.getElementById(co)
+            // console.log(drinkList[0].drinkName)
+            // if (drinkList.drinkId == "1") {
+            //     console.log(drinkList.drinkName);
 
-        //}
-        // else if () {
+            //}
+            // else if () {
 
-        // }
-    </script>
+            // }
+        </script>
 </body>
 
 </html>

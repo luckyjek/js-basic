@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Document</title>
+</head>
+
+<body>
+
+  <select name="" id="" onchange="selectPerson(this);">
+    <option value="">사람을 선택하세요.</option>
+    <option value="성인">성인</option>
+    <option value="청소년">청소년</option>
+    <option value="어린이">어린이</option>
+  </select>
+
+  <select name="" id="sel_start">
+    <option value="">출발역을 선택하세요.</option>
+  </select>
+
+  <select name="" id="sel_end">
+    <option value="">도착역을 선택하세요.</option>
+  </select>
+
+  <div>
+    <button type="button" onclick="calPrice();">요금계산</button>
+  </div>
+
+  <script>
+    const subwayList = ["영등포구청역", "당산역", "합정역", "홍대입구역", "신촌역", "이대역", "아현역", "충정로역", "시청역", "을지로3가역", "을지로4가역",
+      "동대문역사문화공원역", "신당역", "상왕십리역", "왕십리역", "한양대역", "뚝섬역", "성수역", "건대입구역", "구의역", "강변역", "잠실나루역", "잠실역", "종합운동장역",
+      "삼성역", "선릉역", "역삼역", "강남역", "서초역", "방배역", "사당역", "낙성대역", "서울대입구역", "봉천역", "신림역", "신대방역", "구로디지털단지역", "대림역",
+      "신도림역", "문래역"
+    ];
+
+    const intervalDistance = 3170;
+
+    // 출발역과 도착역 option을 그려주는 함수
+    function selectPerson(ele) {
+      console.log(ele.value); // 성인
+      // console.log("here");
+
+      // 출발역을 배열을 만든다.
+      var s = [];
+      s.push(`<option value="">출발역을 선택하세요.</option>`);
+      if (ele.value != "") {
+        // console.log(oCity[ele.value]);
+        for (var subwayIdx in subwayList) {
+          s.push(`<option value="${subwayList[subwayIdx]}">${subwayList[subwayIdx]}</option>`);
+        }
+      }
+
+      // 도착역 배열을 만든다.
+      var e = [];
+      if (ele.value != "") {
+        // console.log(oCity[ele.value]);
+        e.push(`<option value="">도착역을 선택하세요.</option>`);
+
+        for (var subwayIdx in subwayList) {
+          e.push(`<option value="${subwayList[subwayIdx]}">${subwayList[subwayIdx]}</option>`);
+        }
+      }
+
+      document.getElementById("sel_start").innerHTML = s.join("");
+      document.getElementById("sel_end").innerHTML = e.join("");
+    }
+
+
+
+
+
+    // 성인만 먼저
+
+
+    function calDistance(startStation, endStation) {
+
+      // 출발역 idx 찾기
+      for (var subwayIdx in subwayList) {
+
+
+        // console.log(subwayList[subwayIdx]); // subwayList[0] = 영등
+        // console.log(startStation);
+        if (subwayList[subwayIdx] == startStation) {
+
+          // 이건 이름을 출력
+          // var startIdx = subwayList[subwayIdx]
+          var startIdx = subwayIdx;
+          break;
+        }
+
+      }
+
+      // 도착역 idx 찾기
+      for (var subwayIdx in subwayList) {
+
+        if (subwayList[subwayIdx] == endStation) {
+
+          var endIdx = subwayIdx;
+          break;
+        }
+
+      }
+
+      // 제대로 왔고
+      var totalIdx = subwayList.length;
+      console.log(totalIdx);
+      if (startIdx > endIdx) {
+        var subwayLen = totalIdx - startIdx + endIdx;
+      } else {
+        var subwayLen = endIdx - startIdx;
+      }
+
+      var kmDistance = Math.abs(subwayLen * intervalDistance / 1000);
+
+      // 나중에 upper 처리해줘야 함
+
+      var upperDistane = Math.ceil(kmDistance);
+      return upperDistane;
+    }
+
+    var totalDistance = calDistance("한양대역", "당산역");
+    console.log(totalDistance);
+
+    function feePrice(distance, Basicfee) {
+      var totalfee = 0;
+      //var distance = 17; //성인이들어오게해놨어
+      // var basicFee = 1250; //기본요금  - 성인일반 1450  
+
+
+      //우선은 성일일반기본운임이 10KG이내 1250원인데
+      //지금 17km를 갔어요. 그래서 7km를 더 갔죠? 
+      //근데, 5km마다 100원이 추가된다고했으니까 
+      //기본운임1250 + 5키로 추가100 + 2키로 추가 100
+
+      //(성인일반, 청소년 , 어린이)거리가 기본운임료 10보다 더 많이 나올경우 
+      //10~50km이내는 5키로마다 100원추가
+      //50km초가 -> 8km마다 100원 추가가되는 로직이다.
+
+      // 처음에 10km보다 작거나 같은지 검사
+      if (distance <= 10) {
+        //6키로미터탔는데, 얼마내야돼요?
+
+        totalfee = Basicfee;
+        return fee;
+
+        // 50 보다 작거나 같은지  10 < distance <= 50
+      } else if (distance <= 50) {
+
+        distance = distance - 10;
+        totalfee = totalfee + Basicfee;
+
+        addfee = Math.ceil(distance / 5) * 100;
+
+        // distance 는 기본 10키로가 빠져있다.
+        // var addfee1 = Math.floor(distance / 5) * 100 // 남은 거리에 대한 몫 계산
+        // totalfee = totalfee + addfee1
+
+        // if (distance % 5 > 0) {
+        //   totalfee = totalfee + 100;
+        // }
+
+        return totalfee;
+
+        // 50보다 큰 거
+      } else {
+
+
+        // 여기서 다시 10~ 50계산하고 그 이후 50 추가 계싼
+        // 강사님 코드 보세요!
+      }
+
+      // 추가요금 있는 지 계산
+      if (distance >= 10) {
+        //distance추가운임이 10보다 크게나오면 ?
+        //
+        return distance
+      }
+    }
+
+
+    function calPrice() {
+      var startStation = document.getElementById("sel_start").value;
+      var endStation = document.getElementById("sel_end").value;
+
+      console.log(startStation, endStation);
+    }
+
+
+
+    // 정해진 사람에 따른 기본 요금 / 추가 요금 할당 함수
+    function personFee(person) {
+      var Basicfee = (person == "성인") ? 1250 : (person == "청소년") ? 720 : 450;
+
+      return Basicefee
+    }
+
+
+
+
+
+    //성인일반 - 기본운임 : 10km 이내 - 1250원
+    //청소년 - 기본운임 : 10km 이내 - 720원
+    //어린이 - 기본운임 : 10km 이내 - 450원
+
+    //[추가운임]
+    //10~50km 이내 - 5km 마다 100원 추가
+    //50km 초가 - 8km 마다 100원 추가
+
+    //문제
+    //출발역, 도착역을 선택하고, (성인/청소년/어린이)를 선택한 후 조회 버튼을 클릭하면
+    //요금을 계산해서 화면에 보여준다.
+    //지하철은 한방향으로만 운행합니다.
+
+
+    //출발역이 어느 역인지 가져옵니다.
+    //도착역이 어느 역인지 가져옵니다.
+    //출발역과 도착역이 같은지 확인하고, 같으면 출발역과 도착역이 같다고 보여주고 요금 계산을 하지 않습니다.
+    //도착역에서 출발역 사이의 몇개의 역이 있는지 계산합니다.
+    //출발역과 도착역의 값을 역이름이 아니고, 인덱스 번호로 만들면,출발역과 도착역 사이의 몇개의 역이 있는지 알수있다.
+    //도착역과 출발역 사이의 총 역수에 역마다 거리인 3170미터를 곱해서 총 이동거리를 계산합니다. 
+    //총 이동 거리가 10km이내이면 기본요금입니다. 기본요금은 성인인 경우 1250원, 청소년은 720원,어린이는 450원입니다.
+    //이동거리가 10km 이내이면 성인이면 1250원
+    //이동거리가 10km 이내이면 성인이면 720원
+    //이동거리가 10km 이내이면 성인이면 720원
+
+
+
+    // if (distance <= 10000) {
+    //성인이면 return 1250
+    //청소년이면 return 720
+    // }
+  </script>
+</body>
+
+</html>
